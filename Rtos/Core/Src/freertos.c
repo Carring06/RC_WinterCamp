@@ -167,10 +167,15 @@ void OLED_Task(void *argument)
   
   while (1)
   {
-    LCD_PrintString(0, 0, "Speed:   ");
+    if(Speed == 0)
+		{
+		    LCD_PrintString(0, 0, "Speed:   ");
+				
+		}	
     len = LCD_PrintString(0, 0, "Speed:");
     LCD_PrintSignedVal(len, 0, Speed);
-    osDelay(1000); // 1000ms刷新1次，避免闪烁和CPU占用
+//  osDelay(1000); // 1000ms刷新1次，避免闪烁和CPU占用
+		vTaskDelay(1000);
   }
 }
 /* USER CODE END Application */
